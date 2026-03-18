@@ -2,22 +2,30 @@ package com.isha.app;
 
 import com.isha.model.UserRegistration;
 import com.isha.service.UserLoginService;
-import com.isha.service.UserRegistrationService;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+public class MainApp {
+    public static void main(String[] args) {
 
-public class MainApp
-{
-    public static void main(String[] args)
-    {
-        // for testing purpose!
-        // create object (this simulates form input)
-        UserRegistration user = new UserRegistration();
-
-
-        // call service
+        // create service object
         UserLoginService service = new UserLoginService();
-        service.registerUserService(user);
+
+        try {
+            // 🔹 test data (change this according to your DB)
+            String email = "isha@gmail.com";
+            String password = "123456";
+
+            // 🔹 call login method
+            UserRegistration user = service.loginUser(email, password);
+
+            // 🔹 if login successful
+            System.out.println("Login Successful");
+            System.out.println("User Name: " + user.getName());
+            System.out.println("User Email: " + user.getEmail());
+
+        } catch (Exception e) {
+            // 🔹 if login fails
+            System.out.println("Login Failed");
+            System.out.println(e.getMessage());
+        }
     }
 }

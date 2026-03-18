@@ -15,6 +15,7 @@ public class UserRegistration
     @Column(unique = true,nullable = false) // email cannot be null and need to be unique
     private String email;
     @Column(nullable = false)
+    // use hashing like BCrypt in real big projects for password but here we're learning so took it as String
     private String password;
     @Lob
     private String bio;
