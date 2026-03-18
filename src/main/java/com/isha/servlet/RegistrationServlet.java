@@ -2,6 +2,7 @@ package com.isha.servlet;
 
 import com.isha.model.UserRegistration;
 import com.isha.service.UserRegistrationService;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -43,12 +44,11 @@ public class RegistrationServlet extends HttpServlet
         service.registerUserService(user);
 
         // response
-        try
-        {
-            response.getWriter().println("Registration Successful");
-        }
-        catch (IOException e)
-        {
+        // forwarding to userregistered.jsp
+        try {
+            RequestDispatcher rd = request.getRequestDispatcher("/userregistered.jsp");
+            rd.forward(request, response);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

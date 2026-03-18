@@ -2,28 +2,38 @@
 <html>
 <head>
     <title>Register</title>
-
     <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
 
-<h2>InnerCircle Register here!!!</h2>
+<div class="container">
+    <h2>InnerCircle 💖</h2>
 
-<form action="register" method="post">
+    <form action="register" method="post">
 
-    Name: <input type="text" name="name" /><br><br>
+        <input type="text" name="name" placeholder="Name" required />
 
-    Email: <input type="text" name="email" /><br><br>
+        <input type="email" name="email" placeholder="Email" required />
 
-    Password: <input type="password" name="password" /><br><br>
+        <input type="password" name="password" placeholder="Password" required />
 
-    Bio: <input type="text" name="bio" /><br><br>
+        <input type="text" name="bio" placeholder="Bio" />
 
-    Profile Picture: <input type="file" name="profilePicture" /><br><br>
+        <input type="file" name="profilePicture" />
 
-    <button type="submit">Register</button>
+        <button type="submit">Register</button>
 
-</form>
+    </form>
+
+    <!-- 👇 ADDED THIS ONLY -->
+    <p style="text-align:center; margin-top:15px;">
+        Already have an account?
+        <a href="login.jsp" style="color:#ff4d6d; font-weight:bold; text-decoration:none;">
+            Login
+        </a>
+    </p>
+
+</div>
 
 </body>
 </html>

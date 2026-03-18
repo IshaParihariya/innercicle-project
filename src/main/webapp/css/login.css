@@ -14,11 +14,11 @@ body {
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(255, 105, 135, 0.3);
     width: 320px;
+    text-align: center;
 }
 
 /* Heading */
 h2 {
-    text-align: center;
     color: #ff4d6d;
     margin-bottom: 20px;
 }
@@ -56,4 +56,20 @@ button {
 button:hover {
     transform: scale(1.05);
     background: linear-gradient(to right, #e63956, #ff4d6d);
+}
+
+/* Register link */
+.register-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #ff4d6d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
 }
