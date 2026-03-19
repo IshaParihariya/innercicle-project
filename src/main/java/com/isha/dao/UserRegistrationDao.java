@@ -47,7 +47,7 @@ public class UserRegistrationDao
         {
             if(flag==true)
             {
-                transaction.commit();// sav permanently
+                transaction.commit();// save permanently
             }
             else
             {
