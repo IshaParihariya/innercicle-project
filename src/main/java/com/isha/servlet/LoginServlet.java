@@ -3,10 +3,13 @@ package com.isha.servlet;
 import com.isha.model.UserRegistration;
 import com.isha.service.UserLoginService;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet
@@ -14,7 +17,7 @@ public class LoginServlet extends HttpServlet
 “Login uses POST because it sends sensitive data securely
 in the request body instead of exposing it in the URL.”
 */
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException
     {
         try
         {
@@ -34,7 +37,7 @@ in the request body instead of exposing it in the URL.”
 
             // instead of a message that user logged in lets show the data of the user
             // including the name, bio, profile picture
-            request.setAttribute("user",user); // setAttribute(key, value) -> attach data to request
+            request.getSession().setAttribute("user",user); // setAttribute(key, value) -> attach data to request
             RequestDispatcher rd= request.getRequestDispatcher("/useracc.jsp");
             rd.forward(request,response);
         }

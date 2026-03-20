@@ -12,8 +12,14 @@
 getAttribute → RECEIVE
 --%>
 
-<%UserRegistration user = (UserRegistration) request.getAttribute("user"); %>
 <%--type casting--%>
+<%UserRegistration user = (UserRegistration) request.getSession().getAttribute("user");
+    if(user == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
+
 
 
 <html>
@@ -51,7 +57,7 @@ getAttribute → RECEIVE
             <button>Chat 💬</button>
         </a>
 
-    </div>button>
+    </div>
 </div>
 
 </div>

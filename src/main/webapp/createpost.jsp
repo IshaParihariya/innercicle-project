@@ -15,7 +15,7 @@
 <form action="post" method="post">
 
 <%-- form is for sending the data --%>
-<textarea name="content" placeholder="What's on your mind? 💭" required></textarea>
+<textarea name="post" placeholder="What's on your mind? 💭" required></textarea>
 
 <button type="submit">Post 🎀</button>
 

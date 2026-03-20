@@ -3,6 +3,7 @@ package com.isha.servlet;
 import com.isha.model.UserRegistration;
 import com.isha.service.UserRegistrationService;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +15,7 @@ import java.io.IOException;
 public class RegistrationServlet extends HttpServlet
 {
     // for the data to get in the database
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException
     {
         // get data from form
         String name = request.getParameter("name");
