@@ -34,7 +34,7 @@ getAttribute → RECEIVE
 <!-- Profile Section -->
 <div class="profile">
     <div class="profile-pic">
-        👱🏻‍♀️
+        <img src="getProfilePic"/>
     </div>
 
     <h2>Welcome, <%= user.getName() %> 💖</h2>

@@ -9,7 +9,7 @@
 <div class="container">
     <h2>InnerCircle 💖</h2>
 
-    <form action="register" method="post">
+    <form action="register" method="post" enctype="multipart/form-data">
 
         <input type="text" name="name" placeholder="Name" required />
 
