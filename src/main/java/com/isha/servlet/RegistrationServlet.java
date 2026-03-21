@@ -21,7 +21,7 @@ import java.io.IOException;
 public class RegistrationServlet extends HttpServlet
 {
     // for the data to get in the database
-    public void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException
     {
         // get data from form
         String name = request.getParameter("name");

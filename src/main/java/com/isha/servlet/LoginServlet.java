@@ -17,7 +17,7 @@ public class LoginServlet extends HttpServlet
 “Login uses POST because it sends sensitive data securely
 in the request body instead of exposing it in the URL.”
 */
-    public void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException
     {
         try
         {

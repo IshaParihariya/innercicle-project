@@ -14,7 +14,7 @@ import java.io.IOException;
 @WebServlet("/post")
 public class CreatePostServlet extends HttpServlet
 {
-    public void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException
     {
         Post p=new Post();
         String post=request.getParameter("post");
