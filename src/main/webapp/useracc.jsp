@@ -53,7 +53,8 @@ getAttribute → RECEIVE
             <button>View Feed 👀</button>
         </a>
 
-        <a href="chatusers.jsp">
+        <!-- it goes to Servlet (Servlet runs then fect the data and then to jsp)-->
+        <a href="chatusers">
             <button>Chat 💬</button>
         </a>
 

@@ -15,10 +15,13 @@ import java.util.List;
 // for the fetching of the users from the db
 
     @WebServlet("/chatusers")
-    public class ChatUserServlet extends HttpServlet {
+    public class ChatUserServlet extends HttpServlet
+    {
 
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+                throws ServletException, IOException
+        {
+            System.out.println("ChatUserServlet hit");
 
             ChatUserDao dao = new ChatUserDao();
             List<UserRegistration> users = dao.getAllUsers();

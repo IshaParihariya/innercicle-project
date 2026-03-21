@@ -10,12 +10,10 @@ import java.util.List;
 
 public class ChatUserDao {
 
-       SessionFactory sessionFactory = new Configuration()
-                .configure("hibernatepost.cfg.xml")
-                .buildSessionFactory();
-
-
     public List<UserRegistration> getAllUsers() {
+        SessionFactory sessionFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .buildSessionFactory();
 
         Session session = sessionFactory.openSession();
         List<UserRegistration> users = null;
