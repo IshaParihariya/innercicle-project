@@ -11,7 +11,7 @@ public class CreatePostDao
 {
     public void postDao(String post)
     {
-        SessionFactory sessionFactory= new Configuration().configure("hibernatepost.cfg.xml").buildSessionFactory();
+        SessionFactory sessionFactory= new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         Session session=sessionFactory.openSession();
         Transaction transaction=null;
         boolean flag=false;

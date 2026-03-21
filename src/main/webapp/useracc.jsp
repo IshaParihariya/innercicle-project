@@ -53,7 +53,7 @@ getAttribute → RECEIVE
             <button>View Feed 👀</button>
         </a>
 
-        <a href="chat.jsp">
+        <a href="chatusers.jsp">
             <button>Chat 💬</button>
         </a>
 

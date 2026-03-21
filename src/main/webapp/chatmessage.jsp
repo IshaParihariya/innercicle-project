@@ -12,7 +12,7 @@
     <title>InnerCircle Chat</title>
 
     <!-- Linking external CSS -->
-    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/chatmessage.css">
 </head>
 
 <body>
