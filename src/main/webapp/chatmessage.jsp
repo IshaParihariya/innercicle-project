@@ -16,23 +16,15 @@
 
 <div class="chat-container">
 
-    <!-- Header -->
     <div class="chat-header">
         Chat with <%= receiver %> 💬
     </div>
 
-    <!-- Chat Messages -->
-    <div id="chatBox" class="chat-box">
-        <!-- messages will come here later -->
-    </div>
+    <div id="chatBox" class="chat-box"></div>
 
-    <!-- Hidden fields -->
-    <!--Because JavaScript cannot directly access JSP variables
-        So we store them in HTML → JS can read them-->
     <input type="hidden" id="sender" value="<%= sender %>">
     <input type="hidden" id="receiver" value="<%= receiver %>">
 
-    <!-- Input -->
     <div class="chat-input">
         <input type="text" id="msg" placeholder="Type a message..." />
         <button onclick="sendMessage()">Send</button>
@@ -41,6 +33,7 @@
 </div>
 
 <script>
+
     function sendMessage() {
         let msg = document.getElementById("msg").value;
         let sender = document.getElementById("sender").value;
@@ -49,18 +42,70 @@
         fetch("chatmessage", {
             method: "POST",
             headers: {
-                <!--sending data like a form-->
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            <!--sender=Isha&receiver=Rahul&message=Hello-->
             body: "sender=" + sender + "&receiver=" + receiver + "&message=" + msg
         })
             .then(res => res.text())
             .then(data => {
-                console.log(data);
+
+                let chatBox = document.getElementById("chatBox");
+
+                chatBox.innerHTML += `
+            <div class="message sent">
+                <div>${msg}</div>
+                <span class="time">now</span>
+            </div>
+        `;
+
                 document.getElementById("msg").value = "";
+                chatBox.scrollTop = chatBox.scrollHeight;
             });
     }
+
+
+    // 🔥 LOAD MESSAGES
+    function loadMessages() {
+        let sender = document.getElementById("sender").value;
+        let receiver = document.getElementById("receiver").value;
+
+        fetch("getMessages?sender=" + sender + "&receiver=" + receiver)
+            .then(res => res.json())
+            .then(messages => {
+
+                let chatBox = document.getElementById("chatBox");
+                chatBox.innerHTML = "";
+
+                messages.forEach(msg => {
+
+                    if (msg.sender === sender) {
+                        chatBox.innerHTML += `
+                    <div class="message sent">
+                        <div>${msg.content}</div>
+                        <span class="time">${msg.time}</span>
+                    </div>
+                `;
+                    } else {
+                        chatBox.innerHTML += `
+                    <div class="message received">
+                        <div>${msg.content}</div>
+                        <span class="time">${msg.time}</span>
+                    </div>
+                `;
+                    }
+
+                });
+
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+    }
+
+    // auto refresh
+    setInterval(loadMessages, 1000);
+
+    // first load
+    loadMessages();
+
 </script>
 
 </body>
