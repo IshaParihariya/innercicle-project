@@ -1,17 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ishh1
-  Date: 3/21/2026
-  Time: 10:42 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    String receiver = (String) request.getAttribute("receiver");
+    String sender = (String) request.getAttribute("sender");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>InnerCircle Chat</title>
-
-    <!-- Linking external CSS -->
     <link rel="stylesheet" href="css/chatmessage.css">
 </head>
 
@@ -21,21 +18,50 @@
 
     <!-- Header -->
     <div class="chat-header">
-        InnerCircle Chat 💬
+        Chat with <%= receiver %> 💬
     </div>
 
     <!-- Chat Messages -->
     <div id="chatBox" class="chat-box">
-        <!-- Messages will be loaded here -->
+        <!-- messages will come here later -->
     </div>
 
-    <!-- Input Area -->
+    <!-- Hidden fields -->
+    <!--Because JavaScript cannot directly access JSP variables
+        So we store them in HTML → JS can read them-->
+    <input type="hidden" id="sender" value="<%= sender %>">
+    <input type="hidden" id="receiver" value="<%= receiver %>">
+
+    <!-- Input -->
     <div class="chat-input">
         <input type="text" id="msg" placeholder="Type a message..." />
         <button onclick="sendMessage()">Send</button>
     </div>
 
 </div>
+
+<script>
+    function sendMessage() {
+        let msg = document.getElementById("msg").value;
+        let sender = document.getElementById("sender").value;
+        let receiver = document.getElementById("receiver").value;
+
+        fetch("chatmessage", {
+            method: "POST",
+            headers: {
+                <!--sending data like a form-->
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            <!--sender=Isha&receiver=Rahul&message=Hello-->
+            body: "sender=" + sender + "&receiver=" + receiver + "&message=" + msg
+        })
+            .then(res => res.text())
+            .then(data => {
+                console.log(data);
+                document.getElementById("msg").value = "";
+            });
+    }
+</script>
 
 </body>
 </html>

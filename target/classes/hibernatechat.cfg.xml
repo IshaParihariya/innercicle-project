@@ -29,7 +29,7 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
 
         <!-- Entity mapping -->
-        <mapping class="com.isha.model.SendMessage"/>
+        <mapping class="com.isha.model.ChatMessage"/>
 
     </session-factory>
 

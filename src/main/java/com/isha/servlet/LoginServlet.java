@@ -5,53 +5,44 @@ import com.isha.service.UserLoginService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
 @WebServlet("/login")
-public class LoginServlet extends HttpServlet
-{/*
-“Login uses POST because it sends sensitive data securely
-in the request body instead of exposing it in the URL.”
-*/
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException
-    {
-        try
-        {
+public class LoginServlet extends HttpServlet {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        try {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
 
-            // if user exists like email and password same then will pass the object or else not
+            // Call service to validate user
             UserLoginService userLoginService = new UserLoginService();
             UserRegistration user = userLoginService.loginUser(email, password);
 
-            /*response
-            //It tells the browser:
-            //“Hey, I’m sending plain text, don’t treat it like HTML."
-            response.setContentType("text/plain");
-            response.getWriter().println("user logged in");
-             */
+            // CHECK if user exists
+            if (user != null) {
 
-            // instead of a message that user logged in lets show the data of the user
-            // including the name, bio, profile picture
-            request.getSession().setAttribute("user",user); // setAttribute(key, value) -> attach data to request
-            RequestDispatcher rd= request.getRequestDispatcher("/useracc.jsp");
-            rd.forward(request,response);
-        }
-        // if user does not exist or incoreect password or email or any other login issue
-        // then will print a message
-        catch (Exception e)
-        {
-            try {
+                // Store full user object in session
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+
+                // Forward to user account page
+                RequestDispatcher rd = request.getRequestDispatcher("/useracc.jsp");
+                rd.forward(request, response);
+
+            } else {
+                // Invalid login
                 response.setContentType("text/plain");
-                response.getWriter().println("Error: " + e.getMessage());
-            } catch (Exception ex) {
-                ex.printStackTrace();
+                response.getWriter().println("Invalid email or password");
             }
-        }
 
+        } catch (Exception e) {
+            response.setContentType("text/plain");
+            response.getWriter().println("Error: " + e.getMessage());
+        }
     }
 }

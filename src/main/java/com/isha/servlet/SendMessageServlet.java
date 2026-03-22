@@ -31,6 +31,9 @@ public class SendMessageServlet extends HttpServlet
         // object of the service
         SendMessageService chatService =new SendMessageService();
         chatService.sendMessageService(sendMessage);
+
+        response.setContentType("text/plain");
+        response.getWriter().println("mmessage sent");
     }
 
 }
