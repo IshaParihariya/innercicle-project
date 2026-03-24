@@ -1,8 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.isha.model.ChatMessage" %>
+<%@ page import="com.isha.model.UserRegistration" %>
 
 <%
+    // Get logged-in user object from session
+    UserRegistration user = (UserRegistration) session.getAttribute("user");
+
+    // ⚠️ Safety check (optional but good)
+    String sender = null;
+    if(user != null){
+        sender = user.getEmail();   //
+    }
+
     String receiver = (String) request.getAttribute("receiver");
-    String sender = (String) request.getAttribute("sender");
+    List<ChatMessage> messages = (List<ChatMessage>) request.getAttribute("messages");
 %>
 
 <!DOCTYPE html>
@@ -16,96 +28,57 @@
 
 <div class="chat-container">
 
+    <!-- Header -->
     <div class="chat-header">
         Chat with <%= receiver %> 💬
     </div>
 
-    <div id="chatBox" class="chat-box"></div>
+    <!-- Chat Messages -->
+    <div class="chat-box">
 
-    <input type="hidden" id="sender" value="<%= sender %>">
-    <input type="hidden" id="receiver" value="<%= receiver %>">
+        <% if(messages != null && sender != null){
+            for(ChatMessage msg : messages){
 
-    <div class="chat-input">
-        <input type="text" id="msg" placeholder="Type a message..." />
-        <button onclick="sendMessage()">Send</button>
+                if(msg.getSender().equals(sender)){
+        %>
+        <div class="message sent">
+            <div><%= msg.getMessage() %></div>
+            <span class="time"><%= msg.getTime() %></span>
+        </div>
+        <%
+        } else {
+        %>
+        <div class="message received">
+            <div><%= msg.getMessage() %></div>
+            <span class="time"><%= msg.getTime() %></span>
+        </div>
+        <%
+                    }
+                }
+            } %>
+
     </div>
+
+    <!-- Send Message Form -->
+    <form action="chatmessage" method="post" class="chat-input">
+
+        <!-- NO sender field -->
+        <input type="hidden" name="receiver" value="<%= receiver %>">
+
+        <input type="text" name="message" placeholder="Type a message..." required />
+
+        <button type="submit">Send</button>
+
+    </form>
 
 </div>
 
+<!-- Auto scroll -->
 <script>
-
-    function sendMessage() {
-        let msg = document.getElementById("msg").value;
-        let sender = document.getElementById("sender").value;
-        let receiver = document.getElementById("receiver").value;
-
-        fetch("chatmessage", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: "sender=" + sender + "&receiver=" + receiver + "&message=" + msg
-        })
-            .then(res => res.text())
-            .then(data => {
-
-                let chatBox = document.getElementById("chatBox");
-
-                chatBox.innerHTML += `
-            <div class="message sent">
-                <div>${msg}</div>
-                <span class="time">now</span>
-            </div>
-        `;
-
-                document.getElementById("msg").value = "";
-                chatBox.scrollTop = chatBox.scrollHeight;
-            });
+    window.onload = function() {
+        let chatBox = document.querySelector(".chat-box");
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
-
-
-    // 🔥 LOAD MESSAGES
-    function loadMessages() {
-        let sender = document.getElementById("sender").value;
-        let receiver = document.getElementById("receiver").value;
-
-        fetch("getMessages?sender=" + sender + "&receiver=" + receiver)
-            .then(res => res.json())
-            .then(messages => {
-
-                let chatBox = document.getElementById("chatBox");
-                chatBox.innerHTML = "";
-
-                messages.forEach(msg => {
-
-                    if (msg.sender === sender) {
-                        chatBox.innerHTML += `
-                    <div class="message sent">
-                        <div>${msg.content}</div>
-                        <span class="time">${msg.time}</span>
-                    </div>
-                `;
-                    } else {
-                        chatBox.innerHTML += `
-                    <div class="message received">
-                        <div>${msg.content}</div>
-                        <span class="time">${msg.time}</span>
-                    </div>
-                `;
-                    }
-
-                });
-
-                chatBox.scrollTop = chatBox.scrollHeight;
-            });
-    }
-
-    // auto refresh
-    setInterval(loadMessages, 1000);
-
-    // first load
-    loadMessages();
-
 </script>
 
 </body>

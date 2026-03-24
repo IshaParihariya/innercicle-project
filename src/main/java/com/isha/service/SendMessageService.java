@@ -29,7 +29,7 @@ public class SendMessageService
             throw new RuntimeException("retry");
         }
 
-        // if no exception or problem then pass the chat data to the Dal it will communicate with the database
+        // if no exception or problem then pass the chat data to the Dao it will communicate with the database
         SendMessageDao sendMessageDao=new SendMessageDao();
         sendMessageDao.sendMessageDao(sendMessage);
     }

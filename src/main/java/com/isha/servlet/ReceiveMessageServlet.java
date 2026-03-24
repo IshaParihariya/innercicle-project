@@ -1,6 +1,7 @@
 package com.isha.servlet;
 
 import com.isha.model.ChatMessage;
+import com.isha.model.UserRegistration;
 import com.isha.service.ReceiveMessageService;
 
 import jakarta.servlet.ServletException;
@@ -17,8 +18,12 @@ public class ReceiveMessageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String sender = request.getParameter("sender");
+        UserRegistration user = (UserRegistration) request.getSession().getAttribute("user");
+        String sender = user.getEmail();
         String receiver = request.getParameter("receiver");
+
+        request.setAttribute("sender", sender);
+        request.setAttribute("receiver", receiver);
 
         ReceiveMessageService service = new ReceiveMessageService();
         List<ChatMessage> messages = service.fetchMessages(sender, receiver);
@@ -26,27 +31,23 @@ public class ReceiveMessageServlet extends HttpServlet {
         // this tell not html, JSON
 
         /*
+        NOT USING JS cuz a lot of confusion and not sure about it--
         frontend (JavaScript) and backend (Servlet) need a common language to communicate
         that language = JSON
         JS don not understand java objects so JSON is used
          */
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
 
-        out.print("[");
-        for (int i = 0; i < messages.size(); i++) {
-            ChatMessage m = messages.get(i);
 
-            out.print("{");
-            out.print("\"sender\":\"" + m.getSender() + "\",");
-            out.print("\"message\":\"" + m.getMessage() + "\"");
-            out.print("\"time\":\"" + m.getTime() + "\"");
-            out.print("}");
+        request.setAttribute("messages", messages);
+        request.setAttribute("sender", sender);
+        request.setAttribute("receiver", receiver);
 
-            if (i < messages.size() - 1) {
-                out.print(",");
-            }
+        try {// request forward to jsp
+            request.getRequestDispatcher("chatmessage.jsp").forward(request, response);
         }
-        out.print("]");
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

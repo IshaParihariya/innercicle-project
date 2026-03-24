@@ -17,7 +17,7 @@ public class ReceieveMessageDao {
         String hql = "FROM ChatMessage WHERE " +
                 "(sender = :sender AND receiver = :receiver) OR " +
                 "(sender = :receiver AND receiver = :sender) " +
-                "ORDER BY timestamp";
+                "ORDER BY time";
 // here msgs as per the time so in order of time
         Query<ChatMessage> query = session.createQuery(hql, ChatMessage.class);
         query.setParameter("sender", sender);

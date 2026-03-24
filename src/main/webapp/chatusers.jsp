@@ -33,7 +33,9 @@
             for(UserRegistration u : users) { %>
 
         <div class="user-card">
-            <a href="chat?receiver=<%= u.getName() %>">
+            <!-- send EMAIL in URL -->
+            <a href="chat?receiver=<%= u.getEmail() %>">
+                <!-- Still show NAME to user -->
                 <%= u.getName() %>
             </a>
         </div>
