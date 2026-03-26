@@ -20,7 +20,9 @@ public class UserRegistration
     @Lob
     private String bio;
     @Lob
-    @Column(columnDefinition = "LONGBLOB")
+   // for MySQL @Column(columnDefinition = "LONGBLOB")
+    // for Postgre
+    @Column(columnDefinition = "BYTEA")
     private byte[] profilePicture=null;
 
     // zero para constructor
