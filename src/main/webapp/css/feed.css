@@ -1,0 +1,72 @@
+/* ===== GLOBAL ===== */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffc1cc, #ffe4e1);
+    margin: 0;
+}
+
+/* ===== CENTER FOR LOGIN/DASHBOARD ===== */
+.center-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* ===== FEED PAGE ===== */
+.feed-page{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+}
+
+/* ===== FEED CONTAINER ===== */
+.feed-container {
+    width: 600px;
+    height: 650px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(255, 105, 135, 0.3);
+    padding: 25px;
+    scroll-behavior: smooth;
+}
+
+/* Scrollbar */
+.feed-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.feed-container::-webkit-scrollbar-thumb {
+    background: #ff758f;
+    border-radius: 10px;
+}
+
+/* ===== POSTS ===== */
+.post-card {
+    background: linear-gradient(135deg, #fff0f3, #ffe4e9);
+    padding: 20px;
+    border-radius: 20px;
+    margin: 15px 0;
+    box-shadow: 0 8px 20px rgba(255, 105, 135, 0.25);
+    transition: 0.3s;
+}
+
+.post-card:hover {
+    transform: scale(1.03);
+}
+
+.post-card p {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* ===== HEADING ===== */
+h2 {
+    color: #ff4d6d;
+    margin-bottom: 20px;
+    font-size: 24px;
+}

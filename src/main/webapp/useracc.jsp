@@ -49,11 +49,12 @@ getAttribute → RECEIVE
             <button>Create Post ➕</button>
         </a>
 
-        <a href="feed.jsp">
+        <!-- go to the servlet first then forwaded to the jsp -->
+        <a href="getPost">
             <button>View Feed 👀</button>
         </a>
 
-        <!-- it goes to Servlet (Servlet runs then fect the data and then to jsp)-->
+        <!-- it goes to Servlet (Servlet runs then fetch the data and then to jsp)-->
         <a href="chatusers">
             <button>Chat 💬</button>
         </a>
