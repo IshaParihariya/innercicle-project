@@ -14,7 +14,7 @@ public class UserRegistrationDao
     // saving the user registration data in the database
     public void registerUserDao(UserRegistration user)
     {
-        SessionFactory sessionFactory= new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory= new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         Session session=sessionFactory.openSession();
         Transaction transaction=null;
         boolean flag=false;

@@ -23,7 +23,7 @@ public class UserLoginDao
         so we create it once and reuse it throughout the application.
         BUT HERE WE ARE LEARNING AND I DONT HAVE MUCH IDEA YET SO WE DOING LIKE THIS**
          */
-        SessionFactory sessionFactory= new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory= new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         Session session=sessionFactory.openSession();
 
 
