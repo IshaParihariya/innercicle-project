@@ -4,24 +4,25 @@
 
         <!-- Database connection settings -->
         <property name="hibernate.connection.driver_class">
-            com.mysql.cj.jdbc.Driver
+            org.postgresql.Driver
         </property>
 
         <property name="hibernate.connection.url">
-            jdbc:mysql://localhost:3306/innercircle_hibernate
+            jdbc:postgresql://dpg-d72lltv5r7bs7388mghg-a.virginia-postgres.render.com:5432/innercircle_jux1?sslmode=require
         </property>
 
+
         <property name="hibernate.connection.username">
-            root
+            innercircle_jux1_user
         </property>
 
         <property name="hibernate.connection.password">
-            Lovealarm@123
+            gGD2OHPll0ooL0Fgr4WdSEBiAMaUv2nf
         </property>
 
         <!-- Hibernate settings -->
         <property name="hibernate.dialect">
-            org.hibernate.dialect.MySQLDialect
+            org.hibernate.dialect.PostgreSQLDialect
         </property>
 
         <property name="hibernate.show_sql">true</property>

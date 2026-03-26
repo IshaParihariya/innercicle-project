@@ -2,9 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-         http://www.m
-
-aven.apache.org/xsd/maven-4.0.0.xsd">
+         http://www.maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -37,13 +35,13 @@ aven.apache.org/xsd/maven-4.0.0.xsd">
             <scope>provided</scope>
         </dependency>
 
-        <!-- MySQL -->
+        <!-- I had it in MySQl database but as there wasnt a free database plan for it so i switched to it as a student
+         on Render PostgreSQL -->
         <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <version>8.3.0</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
         </dependency>
-
     </dependencies>
 
     <!--  BUILD CONFIG -->
