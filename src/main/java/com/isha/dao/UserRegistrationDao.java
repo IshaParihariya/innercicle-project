@@ -17,14 +17,16 @@ public class UserRegistrationDao
         SessionFactory sessionFactory= new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         Session session=sessionFactory.openSession();
         Transaction transaction=null;
-        boolean flag=false;
+        //boolean flag=false;
 
         // try and catch block for the transaction and data saving
         try
         {
             transaction= session.beginTransaction();
             session.persist(user);
-            flag=true;
+            // were having problems so directly commited
+            transaction.commit();
+           // flag=true;
         }
         catch(HibernateException e)
         {
@@ -45,14 +47,6 @@ public class UserRegistrationDao
         // finally block
         finally
         {
-            if(flag==true)
-            {
-                transaction.commit();// save permanently
-            }
-            else
-            {
-                transaction.rollback(); // no changes roll back
-            }
 
             session.close();
             sessionFactory.close();
