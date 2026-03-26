@@ -1,0 +1,90 @@
+/* ===== RESET ===== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== FULL SCREEN BACKGROUND ===== */
+.landing-page {
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #ffc1cc, #ffe4e1);
+}
+
+/* ===== CONTAINER ===== */
+.landing-container {
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+    padding: 20px;
+}
+
+/* ===== TITLE ===== */
+.landing-container h1 {
+    font-size: 48px;
+    color: #ff4d6d;
+    margin-bottom: 10px;
+    text-shadow: 0 5px 15px rgba(255, 105, 135, 0.3);
+}
+
+/* ===== TAGLINE ===== */
+.tagline {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+/* ===== BUTTON WRAPPER ===== */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* ===== REMOVE DEFAULT LINK STYLE ===== */
+.landing-page a {
+    text-decoration: none;
+}
+
+/* ===== BUTTON BASE ===== */
+.primary-btn,
+.secondary-btn {
+    padding: 14px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+/* ===== PRIMARY BUTTON ===== */
+.primary-btn {
+    border: 2px solid #ff4d6d;
+    color: #ff4d6d;
+    background: white;
+}
+
+/* ===== SECONDARY BUTTON ===== */
+.secondary-btn {
+    border: 2px solid #ff4d6d;
+    color: #ff4d6d;
+    background: white;
+}
+
+/* ===== HOVER EFFECTS ===== */
+.primary-btn:hover {
+    background: #ff4d6d;
+    color: white;
+    transform: scale(1.08);
+}
+
+.secondary-btn:hover {
+    background: #ff4d6d;
+    color: white;
+    transform: scale(1.08);
+}
