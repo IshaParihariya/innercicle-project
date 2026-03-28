@@ -36,11 +36,13 @@ public class ReceiveMessageServlet extends HttpServlet {
         UserLoginDao userDao = new UserLoginDao();
         UserRegistration receiverUser = userDao.getUserByEmail(receiver);
 
-        String receiverName = "Unknown";
-        if (receiverUser != null) {
+        // was having error due to old one so added here
+        // chat with NULL it was showing
+        String receiverName = receiver; // fallback = email
+
+        if (receiverUser != null && receiverUser.getName() != null) {
             receiverName = receiverUser.getName();
         }
-
         // fetch messages using NAMES (IMPORTANT FIX)
         ReceiveMessageService service = new ReceiveMessageService();
         List<ChatMessage> messages = service.fetchMessages(sender, receiver);

@@ -30,7 +30,7 @@ public class GetPostDao
             // could have used Collections.shuffle() as well
             // switched to PostgreSQL
             posts = session.createQuery(
-                    "FROM Post ORDER BY random()", Post.class
+                    "FROM posts ORDER BY random()", Post.class
             ).list();
 
         }
