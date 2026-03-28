@@ -18,7 +18,6 @@ public class UserRegistration
     @Column(nullable = false)
     // use hashing like BCrypt in real big projects for password but here we're learning so took it as String
     private String password;
-    @Lob
     private String bio;
     //@Lob// Hibernate sometimes treats @Lob as OID instead of bytea in PostgreSQL so removed as error
     // for MySQL @Column(columnDefinition = "LONGBLOB")
