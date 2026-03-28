@@ -7,7 +7,7 @@
     // Get logged-in user object from session
     UserRegistration user = (UserRegistration) session.getAttribute("user");
 
-    // ⚠️ Safety check (optional but good)
+    // Safety check
     String sender = null;
     if(user != null){
         sender = user.getEmail();   //
@@ -30,7 +30,7 @@
 
     <!-- Header -->
     <div class="chat-header">
-        Chat with <%= receiver %> 💬
+        Chat with <%= request.getAttribute("receiverName") %> 💬
     </div>
 
     <!-- Chat Messages -->
@@ -39,7 +39,7 @@
         <% if(messages != null && sender != null){
             for(ChatMessage msg : messages){
 
-                if(msg.getSender().equals(sender)){
+                if(sender != null && sender.equals(msg.getSender())){
         %>
         <div class="message sent">
             <div><%= msg.getMessage() %></div>

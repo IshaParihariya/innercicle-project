@@ -2,6 +2,7 @@ package com.isha.model;
 
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
 
 @Entity
 @Table(name = "users")
@@ -19,8 +20,11 @@ public class UserRegistration
     private String password;
     @Lob
     private String bio;
-    @Lob
-   // for MySQL @Column(columnDefinition = "LONGBLOB")
+    //@Lob// Hibernate sometimes treats @Lob as OID instead of bytea in PostgreSQL so removed as error
+    // for MySQL @Column(columnDefinition = "LONGBLOB")
+    // error was here
+    //This is a Hibernate-specific annotation (not JPA).
+    @JdbcTypeCode(org.hibernate.type.SqlTypes.BINARY) // Hey, don’t guess the datatype, treat this as binary data (bytea) in PostgreSQL.
     // for Postgre
     @Column(columnDefinition = "BYTEA")
     private byte[] profilePicture=null;
