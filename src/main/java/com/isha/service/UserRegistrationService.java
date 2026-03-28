@@ -16,14 +16,15 @@ public class UserRegistrationService
         {
             throw new IllegalArgumentException("enter ur pretty name sweet heart!!");
         }
+        if(user.getEmail()==null||user.getEmail().trim().isEmpty()) // if email not entered
+        {
+            throw new IllegalArgumentException("email is needed sweetie!!");
+        }
         if(!user.getEmail().contains("@"))
         {
             throw new IllegalArgumentException("Invalid email gurllie use @ please");
         }
-       if(user.getEmail()==null||user.getEmail().trim().isEmpty()) // if email not entered
-       {
-           throw new IllegalArgumentException("email is needed sweetie!!");
-       }
+
        if(user.getPassword()==null||user.getPassword().trim().isEmpty())
        {
            throw new IllegalArgumentException("enter password please lovie!!");

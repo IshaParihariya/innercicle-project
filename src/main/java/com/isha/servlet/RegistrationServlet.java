@@ -47,6 +47,7 @@ public class RegistrationServlet extends HttpServlet
   password = 1234
 }
          */
+
         UserRegistration user = new UserRegistration();
         user.setName(name);
         user.setEmail(email);
@@ -57,16 +58,19 @@ public class RegistrationServlet extends HttpServlet
         user.setProfilePicture(imageBytes);
 
         // call service
-        UserRegistrationService service = new UserRegistrationService();
-        service.registerUserService(user);
-
-        // response
-        // forwarding to userregistered.jsp
         try {
+            UserRegistrationService service = new UserRegistrationService();
+            service.registerUserService(user);
+
             RequestDispatcher rd = request.getRequestDispatcher("/userregistered.jsp");
             rd.forward(request, response);
+
         } catch (Exception e) {
             e.printStackTrace();
+
+            request.setAttribute("error", e.getMessage());
+            RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
+            rd.forward(request, response);
         }
     }
 }
