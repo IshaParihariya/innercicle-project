@@ -29,6 +29,7 @@ Share your thoughts, express freely, and connect without judgment ✨
 
 The project follows a layered architecture:
 
+```
 src/main/java/com/isha/
 │
 ├── model → Entity classes (User, Post, ChatMessage)
@@ -47,7 +48,7 @@ resources/
 ├── hibernatechat.cfg.xml
 ├── hibernatepost.cfg.xml
 
-
+```
 ---
 
 ### 🧠 Architecture Used
