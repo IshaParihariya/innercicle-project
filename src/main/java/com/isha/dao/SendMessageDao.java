@@ -1,6 +1,7 @@
 package com.isha.dao;
 
 import com.isha.model.ChatMessage;
+import com.isha.util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,8 +12,8 @@ public class SendMessageDao
 {
     public void sendMessageDao(ChatMessage sendMessage)
     {
-        SessionFactory sessionFactory= new Configuration().configure("hibernatechat.cfg.xml").buildSessionFactory();
-        Session session=sessionFactory.openSession();
+        Session session = HibernateUtil.getChatSessionFactory().openSession();
+
         Transaction transaction=null;
         boolean flag=false;
 
@@ -51,7 +52,7 @@ public class SendMessageDao
                 transaction.rollback();
             }
             session.close();
-            sessionFactory.close();
+            //sessionFactory.close();
         }
     }
 }

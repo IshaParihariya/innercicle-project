@@ -1,6 +1,7 @@
 package com.isha.dao;
 
 import com.isha.model.Post;
+import com.isha.util.HibernateUtil;
 import jakarta.servlet.ServletException;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -13,8 +14,7 @@ public class GetPostDao
 {
     public List<Post> getPost()
     {
-        SessionFactory sessionFactory=new Configuration().configure("hibernatepost.cfg.xml").buildSessionFactory();
-        Session session=sessionFactory.openSession();
+        Session session = HibernateUtil.getPostSessionFactory().openSession();
         /*
         Fetching data doesn’t strictly require a transaction, but in Hibernate/Spring applications,
         transactions are recommended even for read operations to support lazy loading,
@@ -46,7 +46,7 @@ public class GetPostDao
         finally
         {
             session.close();
-            sessionFactory.close();
+            //sessionFactory.close();
         }
         return posts;
     }

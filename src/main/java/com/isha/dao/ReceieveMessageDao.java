@@ -1,6 +1,7 @@
 package com.isha.dao;
 
 import com.isha.model.ChatMessage;
+import com.isha.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -11,8 +12,7 @@ import java.util.List;
 public class ReceieveMessageDao {
     public List<ChatMessage> getMessages(String sender, String receiver)
     {
-        SessionFactory sessionFactory=new Configuration().configure("hibernatechat.cfg.xml").buildSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtil.getChatSessionFactory().openSession();
 
         String hql = "FROM ChatMessage WHERE " +
                 "(sender = :sender AND receiver = :receiver) OR " +

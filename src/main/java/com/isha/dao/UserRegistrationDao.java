@@ -2,6 +2,7 @@ package com.isha.dao;
 
 import com.isha.model.UserRegistration;
 import com.isha.service.UserRegistrationService;
+import com.isha.util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,8 +15,8 @@ public class UserRegistrationDao
     // saving the user registration data in the database
     public void registerUserDao(UserRegistration user)
     {
-        SessionFactory sessionFactory= new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-        Session session=sessionFactory.openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
         Transaction transaction=null;
         //boolean flag=false;
 
@@ -49,7 +50,7 @@ public class UserRegistrationDao
         {
 
             session.close();
-            sessionFactory.close();
+           // sessionFactory.close();
         }
     }
 }

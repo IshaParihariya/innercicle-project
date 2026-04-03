@@ -1,6 +1,7 @@
 package com.isha.dao;
 
 import com.isha.model.Post;
+import com.isha.util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,8 +12,7 @@ public class CreatePostDao
 {
     public void postDao(String post)
     {
-        SessionFactory sessionFactory= new Configuration().configure("hibernatepost.cfg.xml").buildSessionFactory();
-        Session session=sessionFactory.openSession();
+        Session session = HibernateUtil.getPostSessionFactory().openSession();
         Transaction transaction=null;
         boolean flag=false;
 
@@ -54,7 +54,7 @@ public class CreatePostDao
             }
 
             session.close();
-            sessionFactory.close();
+           // sessionFactory.close();
         }
     }
     }

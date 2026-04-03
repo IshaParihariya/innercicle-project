@@ -1,6 +1,7 @@
 package com.isha.dao;
 
 import com.isha.model.UserRegistration;
+import com.isha.util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,8 +24,7 @@ public class UserLoginDao
         so we create it once and reuse it throughout the application.
         BUT HERE WE ARE LEARNING AND I DONT HAVE MUCH IDEA YET SO WE DOING LIKE THIS**
          */
-        SessionFactory sessionFactory= new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-        Session session=sessionFactory.openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
 
         // try and catch block
@@ -53,7 +53,7 @@ public class UserLoginDao
         finally
         {
             session.close();
-            sessionFactory.close();
+            //sessionFactory.close();
         }
 return user;// returning user object
     }
