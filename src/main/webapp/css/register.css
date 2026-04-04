@@ -1,59 +1,56 @@
+/* Reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ffc1cc, #ffe4e1);
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
+    justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+    background: linear-gradient(160deg, rgba(60, 10, 80, 0.45), rgba(10, 5, 25, 0.75)),
+    url("../photos/login.jpg") center / cover no-repeat;
 }
 
-/* Card */
+/* Container */
 .container {
-    background: white;
-    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(255, 105, 135, 0.3);
-    width: 320px;
 }
 
-/* Heading */
-h2 {
+/* Title */
+.container h2 {
     text-align: center;
-    color: #ff4d6d;
-    margin-bottom: 20px;
+    color: white;
+    margin-bottom: 10px;
 }
 
 /* Inputs */
 input {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ffc2d1;
+    margin: 8px 0;
     border-radius: 10px;
-    transition: 0.3s;
-}
-
-input:focus {
-    border-color: #ff4d6d;
-    box-shadow: 0 0 5px rgba(255, 77, 109, 0.3);
-    outline: none;
+    border: none;
 }
 
 /* Button */
 button {
     width: 100%;
-    padding: 12px;
-    background: linear-gradient(to right, #ff4d6d, #ff758f);
-    border: none;
+    padding: 10px;
+    background: purple;
     color: white;
+    border: none;
     border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
     margin-top: 10px;
-    transition: 0.3s;
-}
-
-button:hover {
-    transform: scale(1.05);
-    background: linear-gradient(to right, #e63956, #ff4d6d);
 }

@@ -1,68 +1,87 @@
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ffc1cc, #ffe4e1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Main Card */
+/* Body with your image */
+body {
+    height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+
+    background: url("../photos/register.jpg") no-repeat center center/cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark overlay for readability */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 0, 40, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 0;
+}
+
+/* Main container */
 .container {
-    background: white;
-    padding: 40px; /* increased */
-    border-radius: 25px;
-    box-shadow: 0 15px 35px rgba(255, 105, 135, 0.3);
-    width: 420px; /* increased */
+    position: relative;
+    z-index: 1;
+
+    width: 350px;
+    padding: 30px;
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+
+    box-shadow: 0 0 30px rgba(255, 100, 255, 0.3);
     text-align: center;
 }
 
-/* Profile Section */
-.profile-pic {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+/* Profile section */
+.profile-pic img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px solid #ff9cf3;
+    margin-bottom: 15px;
 }
 
-/* 🔥 CONTROL IMAGE SIZE */
-.profile-pic img {
-    width: 120px;        /* fixed width */
-    height: 120px;       /* fixed height */
-    border-radius: 50%;  /* circle */
-    object-fit: cover;   /* crop properly */
-    border: 4px solid #ff4d6d;
-    box-shadow: 0 8px 20px rgba(255, 105, 135, 0.4);
-}
 h2 {
-    color: #ff4d6d;
+    color: #fff;
     margin-bottom: 10px;
 }
 
 p {
-    margin: 5px 0;
-    color: #555;
+    color: #ddd;
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
 /* Buttons */
-.actions {
-    margin-top: 25px;
-}
-
-button {
+.actions button {
     width: 100%;
-    padding: 14px; /* slightly bigger */
-    background: linear-gradient(to right, #ff4d6d, #ff758f);
+    padding: 10px;
+    margin: 8px 0;
+
     border: none;
+    border-radius: 10px;
+
+    background: linear-gradient(135deg, #ff7ee5, #a855f7);
     color: white;
-    border-radius: 12px;
+    font-size: 14px;
     cursor: pointer;
-    font-weight: bold;
-    margin-top: 12px;
+
     transition: 0.3s;
 }
 
-button:hover {
+.actions button:hover {
     transform: scale(1.05);
-    background: linear-gradient(to right, #e63956, #ff4d6d);
+    box-shadow: 0 0 15px rgba(255, 120, 255, 0.7);
 }

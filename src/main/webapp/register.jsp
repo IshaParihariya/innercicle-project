@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Register</title>
-    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="./css/register.css">
 </head>
 <body>
 
@@ -11,13 +12,13 @@
 
     <form action="register" method="post" enctype="multipart/form-data">
 
-        <input type="text" name="name" placeholder="Name" required />
+        <input type="text" name="name" placeholder="Name" autocomplete="name" required />
 
-        <input type="email" name="email" placeholder="Email" required />
+        <input type="email" name="email" placeholder="Email"  autocomplete="email"  required />
 
-        <input type="password" name="password" placeholder="Password" required />
+        <input type="password" name="password" placeholder="Password" autocomplete="new-password" required />
 
-        <input type="text" name="bio" placeholder="Bio" />
+        <input type="text" name="bio" placeholder="Bio" autocomplete="off" />
 
         <input type="file" name="profilePicture" />
 
@@ -25,12 +26,10 @@
 
     </form>
 
-    <!-- 👇 ADDED THIS ONLY -->
-    <p style="text-align:center; margin-top:15px;">
+
+    <p class="register-link">
         Already have an account?
-        <a href="login.jsp" style="color:#ff4d6d; font-weight:bold; text-decoration:none;">
-            Login
-        </a>
+        <a href="login.jsp">Login</a>
     </p>
 
 </div>
