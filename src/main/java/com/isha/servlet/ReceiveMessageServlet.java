@@ -22,6 +22,7 @@ public class ReceiveMessageServlet extends HttpServlet {
         UserRegistration user = (UserRegistration) request.getSession().getAttribute("user");
 
         if (user == null) {
+            System.out.println("ERROR: User is null in session!");
             response.sendRedirect("login.jsp");
             return;
         }
@@ -32,18 +33,26 @@ public class ReceiveMessageServlet extends HttpServlet {
         // receiver = EMAIL from URL
         String receiver = request.getParameter("receiver");
 
-        // convert receiver email → name
+        // CHECK if receiver is null
+        if (receiver == null || receiver.trim().isEmpty()) {
+            System.out.println("ERROR: Receiver is null or empty!");
+            response.sendRedirect("chatusers.jsp");
+            return;
+        }
+
+        // convert receiver email → name for display
         UserLoginDao userDao = new UserLoginDao();
         UserRegistration receiverUser = userDao.getUserByEmail(receiver);
 
-        // was having error due to old one so added here
-        // chat with NULL it was showing
-        String receiverName = receiver; // fallback = email
+        String receiverName = "Unknown User"; // better fallback
 
         if (receiverUser != null && receiverUser.getName() != null) {
             receiverName = receiverUser.getName();
+        } else {
+            System.out.println("WARNING: Could not find user with email: " + receiver);
         }
-        // fetch messages using NAMES (IMPORTANT FIX)
+
+        // fetch messages using EMAILS (DAO expects emails)
         ReceiveMessageService service = new ReceiveMessageService();
         List<ChatMessage> messages = service.fetchMessages(sender, receiver);
 

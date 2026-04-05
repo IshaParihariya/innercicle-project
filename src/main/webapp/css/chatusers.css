@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* Body with background */
+/* BODY */
 body {
     min-height: 100vh;
     font-family: 'DM Sans', sans-serif;
@@ -19,137 +19,206 @@ body {
     position: relative;
 }
 
-/* Magical dark overlay */
+/* LIGHT overlay (so bg is VISIBLE now) */
 body::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-            180deg,
-            rgba(25, 0, 40, 0.75),
-            rgba(10, 0, 25, 0.85)
-    );
-    backdrop-filter: blur(8px);
+    background: rgba(20, 0, 40, 0.35);
     z-index: 0;
 }
 
-/* Floating particles effect (subtle glow) */
-body::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(200,150,255,0.12), transparent 40%);
-    z-index: 0;
-}
-
-/* Main container */
+/* CONTAINER */
 .container {
     position: relative;
     z-index: 1;
 
-    width: 90%;
-    max-width: 500px;
+    width: 95%;
+    max-width: 550px;
+    height: 80vh;
 
-    padding: 30px;
+    padding: 25px;
 
     border-radius: 25px;
 
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
 
-    box-shadow: 0 0 40px rgba(150, 50, 255, 0.25);
+    box-shadow: 0 0 40px rgba(140, 80, 255, 0.25);
+
+    display: flex;
+    flex-direction: column;
 }
 
-/* Header */
+/* HEADER */
 .header {
     text-align: center;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 600;
 
-    color: #ffffff;
-    margin-bottom: 25px;
+    color: #fff;
+    margin-bottom: 20px;
 
     letter-spacing: 1px;
+    text-shadow: 0 0 20px rgba(200, 150, 255, 0.6);
 }
 
-/* User list */
+/* USER LIST */
 .user-list {
+    flex: 1;
+    overflow-y: auto;
+
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+    padding-right: 6px;
 }
 
-/* User card */
+/* USER CARD */
 .user-card {
-    border-radius: 15px;
-    overflow: hidden;
-
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-
-    transition: all 0.35s ease;
-}
-
-/* Link styling */
-.user-card a {
-    display: block;
-    padding: 16px 20px;
-
-    text-decoration: none;
-    color: #f3eaff;
-
-    font-size: 17px;
-    letter-spacing: 0.5px;
-
     position: relative;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    transition: all 0.3s ease;
 }
 
-/* Glow border effect */
+/* GLOW BORDER */
 .user-card::before {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: 15px;
-    padding: 1px;
+    border-radius: 18px;
+    padding: 1.5px;
 
-    background: linear-gradient(120deg, #c084fc, #a855f7, #7c3aed);
+    background: linear-gradient(135deg, #d946ef, #9333ea, #7c3aed);
+
     -webkit-mask:
             linear-gradient(#000 0 0) content-box,
             linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
 
-    opacity: 0;
-    transition: 0.3s;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
 
-/* Hover magic ✨ */
-.user-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    background: rgba(255, 255, 255, 0.15);
+/* LINK - NOW FLEXBOX FOR AVATAR + TEXT */
+.user-card a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 
-    box-shadow: 0 10px 30px rgba(150, 50, 255, 0.5);
+    padding: 15px 20px;
+
+    text-decoration: none;
+    color: #f5e9ff;
+
+    letter-spacing: 0.5px;
+}
+
+/* AVATAR CONTAINER */
+.user-avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    background: linear-gradient(135deg, #d946ef, #9333ea);
+
+    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
+
+    transition: all 0.3s ease;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* AVATAR PLACEHOLDER (first letter of name) */
+.avatar-placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+
+    background: linear-gradient(135deg, #d946ef, #7c3aed);
+}
+
+/* USER INFO (name + bio) */
+.user-info {
+    flex: 1;
+    min-width: 0; /* allows text-overflow to work */
+}
+
+.user-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+
+    letter-spacing: 0.5px;
+}
+
+.user-bio {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.65);
+
+    /* Truncate long bio */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* HOVER EFFECTS */
+.user-card:hover {
+    transform: translateY(-5px) scale(1.02);
+
+    background: rgba(255, 255, 255, 0.12);
+
+    box-shadow: 0 10px 25px rgba(150, 50, 255, 0.4);
 }
 
 .user-card:hover::before {
     opacity: 1;
 }
 
-/* Text glow on hover */
-.user-card:hover a {
-    color: #ffffff;
-    text-shadow: 0 0 8px rgba(200, 150, 255, 0.8);
+.user-card:hover .user-avatar {
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(147, 51, 234, 0.6);
 }
 
-/* Scroll if too many users */
-.user-list {
-    max-height: 400px;
-    overflow-y: auto;
-    padding-right: 5px;
+.user-card:hover .user-name {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(200, 150, 255, 0.9);
 }
 
-/* Custom scrollbar (aesthetic) */
+.user-card:hover .user-bio {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* NO USERS MESSAGE */
+.no-users {
+    text-align: center;
+    padding: 60px 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+}
+
+/* SCROLLBAR */
 .user-list::-webkit-scrollbar {
     width: 6px;
 }
@@ -157,4 +226,40 @@ body::after {
 .user-list::-webkit-scrollbar-thumb {
     background: rgba(180, 120, 255, 0.5);
     border-radius: 10px;
+}
+
+.user-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(180, 120, 255, 0.7);
+}
+
+.user-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        padding: 20px;
+    }
+
+    .header {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .user-avatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .user-name {
+        font-size: 16px;
+    }
+
+    .user-bio {
+        font-size: 12px;
+    }
 }
