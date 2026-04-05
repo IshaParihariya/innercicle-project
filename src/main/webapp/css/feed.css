@@ -1,72 +1,89 @@
-/* ===== GLOBAL ===== */
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ffc1cc, #ffe4e1);
+/* Reset */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* ===== CENTER FOR LOGIN/DASHBOARD ===== */
-.center-page {
+/* Full page background */
+body.feed-page {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+
+    background: url("../photos/feed.jpg") no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+
+    position: relative;
 }
 
-/* ===== FEED PAGE ===== */
-.feed-page{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 50px;
+/* Dark overlay for readability */
+body.feed-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 5, 30, 0.65);
+    backdrop-filter: blur(6px);
+    z-index: 0;
 }
 
-/* ===== FEED CONTAINER ===== */
+/* Main container */
 .feed-container {
-    width: 600px;
-    height: 650px;
-    overflow-y: auto;
-    background: white;
-    border-radius: 25px;
-    box-shadow: 0 10px 25px rgba(255, 105, 135, 0.3);
-    padding: 25px;
-    scroll-behavior: smooth;
-}
+    position: relative;
+    z-index: 1;
 
-/* Scrollbar */
-.feed-container::-webkit-scrollbar {
-    width: 6px;
-}
+    width: 90%;
+    max-width: 700px;
+    padding: 30px;
 
-.feed-container::-webkit-scrollbar-thumb {
-    background: #ff758f;
-    border-radius: 10px;
-}
-
-/* ===== POSTS ===== */
-.post-card {
-    background: linear-gradient(135deg, #fff0f3, #ffe4e9);
-    padding: 20px;
     border-radius: 20px;
-    margin: 15px 0;
-    box-shadow: 0 8px 20px rgba(255, 105, 135, 0.25);
-    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
 
-.post-card:hover {
-    transform: scale(1.03);
+/* Title */
+.feed-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+
+    font-size: 28px;
+    color: #fff;
+
+    letter-spacing: 1px;
 }
 
-.post-card p {
-    margin: 0;
-    color: #333;
-    font-size: 18px;
+/* Post card */
+.post-card {
+    padding: 18px 20px;
+    margin-bottom: 18px;
+
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+
+    color: #f5f5f5;
+    font-size: 16px;
     line-height: 1.5;
+
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-/* ===== HEADING ===== */
-h2 {
-    color: #ff4d6d;
-    margin-bottom: 20px;
-    font-size: 24px;
+/* Hover effect */
+.post-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(255, 255, 255, 0.18);
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* Empty message */
+.feed-container p {
+    text-align: center;
+    color: #ddd;
+    font-size: 16px;
 }

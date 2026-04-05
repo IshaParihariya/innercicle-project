@@ -1,40 +1,77 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Background */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ffc1cc, #ffe4e1);
+    height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+
+    background: url("../photos/registeredbg.jpg") no-repeat center center/cover;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+
+    position: relative;
 }
 
-/* Card */
+/* Soft blue overlay */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 10, 30, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 0;
+}
+
+/* Success box */
 .success-box {
-    background: white;
-    padding: 30px 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(255, 105, 135, 0.3);
+    position: relative;
+    z-index: 1;
+
+    padding: 40px 50px;
+    border-radius: 25px;
+
     text-align: center;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+
+    box-shadow: 0 0 40px rgba(120, 180, 255, 0.3);
 }
 
-/* Text */
+/* Heading */
 .success-box h3 {
-    color: #ff4d6d;
-    font-size: 20px;
+    font-size: 26px;
+    color: #ffffff;
+
     margin-bottom: 20px;
+
+    letter-spacing: 1px;
 }
 
-/* Button */
+/* Link button */
 .success-box a {
+    display: inline-block;
+
+    padding: 12px 25px;
+    border-radius: 20px;
+
     text-decoration: none;
-    background: linear-gradient(to right, #ff4d6d, #ff758f);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-weight: bold;
+    color: #fff;
+
+    background: linear-gradient(135deg, #4facfe, #00c6ff);
+
     transition: 0.3s;
 }
 
+/* Hover glow */
 .success-box a:hover {
-    background: linear-gradient(to right, #e63956, #ff4d6d);
     transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.7);
 }

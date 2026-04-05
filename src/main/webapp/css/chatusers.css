@@ -1,45 +1,160 @@
-body {
+/* Reset */
+* {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #f8cdda, #fbd3e9);
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Body with background */
+body {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+
+    background: url("../photos/chatusers.jpg") no-repeat center center/cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+/* Magical dark overlay */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            180deg,
+            rgba(25, 0, 40, 0.75),
+            rgba(10, 0, 25, 0.85)
+    );
+    backdrop-filter: blur(8px);
+    z-index: 0;
+}
+
+/* Floating particles effect (subtle glow) */
+body::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(200,150,255,0.12), transparent 40%);
+    z-index: 0;
+}
+
+/* Main container */
 .container {
-    width: 350px;
-    margin: 80px auto;
-    background: white;
+    position: relative;
+    z-index: 1;
+
+    width: 90%;
+    max-width: 500px;
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+
+    box-shadow: 0 0 40px rgba(150, 50, 255, 0.25);
+}
+
+/* Header */
+.header {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+
+    color: #ffffff;
+    margin-bottom: 25px;
+
+    letter-spacing: 1px;
+}
+
+/* User list */
+.user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* User card */
+.user-card {
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+
+    transition: all 0.35s ease;
 }
 
-.header {
-    background: #ff5c8a;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    font-weight: bold;
+/* Link styling */
+.user-card a {
+    display: block;
+    padding: 16px 20px;
+
+    text-decoration: none;
+    color: #f3eaff;
+
+    font-size: 17px;
+    letter-spacing: 0.5px;
+
+    position: relative;
 }
 
-.user-list {
-    padding: 10px;
-}
+/* Glow border effect */
+.user-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    padding: 1px;
 
-.user-card {
-    padding: 12px;
-    margin: 10px 0;
-    background: #ffe6eb;
-    border-radius: 10px;
-    text-align: center;
+    background: linear-gradient(120deg, #c084fc, #a855f7, #7c3aed);
+    -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    opacity: 0;
     transition: 0.3s;
 }
 
+/* Hover magic ✨ */
 .user-card:hover {
-    background: #ffccd5;
+    transform: translateY(-6px) scale(1.02);
+    background: rgba(255, 255, 255, 0.15);
+
+    box-shadow: 0 10px 30px rgba(150, 50, 255, 0.5);
 }
 
-.user-card a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
+.user-card:hover::before {
+    opacity: 1;
+}
+
+/* Text glow on hover */
+.user-card:hover a {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(200, 150, 255, 0.8);
+}
+
+/* Scroll if too many users */
+.user-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Custom scrollbar (aesthetic) */
+.user-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.user-list::-webkit-scrollbar-thumb {
+    background: rgba(180, 120, 255, 0.5);
+    border-radius: 10px;
 }
