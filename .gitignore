@@ -41,7 +41,7 @@ out/artifacts/
 # ========================
 #  Environment variables
 # ========================
-src/main/resources/.env
+.env
 .env.*
 
 
