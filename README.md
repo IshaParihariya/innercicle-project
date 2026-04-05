@@ -59,7 +59,7 @@ resources/
 
 ### 🏠 Home Page
 
-![Home](assets/screenshots/home.png)
+![Home](assets/screenshots/index.png)
 
 ### 📝 Register
 
@@ -71,7 +71,7 @@ resources/
 
 ### 👩‍💼 Dashboard
 
-![Dashboard](assets/screenshots/dashboard.png)
+![Dashboard](assets/screenshots/useracc.png)
 
 ### 📰 Feed
 
@@ -79,7 +79,7 @@ resources/
 
 ### 👥 Select User (chat)
 
-![Chat Users](assets/screenshots/chat-users.png)
+![Chat Users](assets/screenshots/chatusers.png)
 
 ### 💬 Chat
 
