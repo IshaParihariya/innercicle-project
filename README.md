@@ -58,32 +58,28 @@ resources/
 ## 📸 Application Flow
 
 ### 🏠 Home Page
-
-![Home](assets/screenshots/index.png)
+![Home Page](assests/screenshots/index.png)
 
 ### 📝 Register
-
-![Register](assets/screenshots/register.png)
+![Register](assests/screenshots/register.png)
 
 ### 🔐 Login
+![Login](assests/screenshots/login.png)
 
-![Login](assets/screenshots/login.png)
-
-### 👩‍💼 Dashboard
-
-![Dashboard](assets/screenshots/useracc.png)
+### 👩‍💼 User Account
+![User Account](assests/screenshots/useracc.png)
 
 ### 📰 Feed
+![Feed](assests/screenshots/feed.png)
 
-![Feed](assets/screenshots/feed.png)
-
-### 👥 Select User (chat)
-
-![Chat Users](assets/screenshots/chatusers.png)
+### 👥 Chat Users
+![Chat Users](assests/screenshots/chatusers.png)
 
 ### 💬 Chat
+![Chat](assests/screenshots/chat.png)
 
-![Chat](assets/screenshots/chat.png)
+### 📮 Post
+![Post](assests/screenshots/post.png)
 
 ---
 
