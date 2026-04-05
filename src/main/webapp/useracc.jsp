@@ -1,67 +1,73 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ishh1
-  Date: 3/19/2026
-  Time: 6:29 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.isha.model.UserRegistration"%>
+<%@ page import="com.isha.model.UserRegistration" %>
+<%@ page import="java.util.Base64" %>
+<%
+    UserRegistration user = (UserRegistration) session.getAttribute("user");
 
-<%--setAttribute → SEND
-getAttribute → RECEIVE
---%>
-
-<%--type casting--%>
-<%UserRegistration user = (UserRegistration) request.getSession().getAttribute("user");
     if(user == null) {
         response.sendRedirect("login.jsp");
         return;
     }
+
+    String base64Image = null;
+    if(user.getProfilePicture() != null && user.getProfilePicture().length > 0) {
+        base64Image = Base64.getEncoder().encodeToString(user.getProfilePicture());
+    }
 %>
-
-
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>User Dashboard</title>
-<link rel="stylesheet" href="css/useracc.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - InnerCircle</title>
+    <link rel="stylesheet" href="css/useracc.css">
 </head>
 <body>
 
-<div class="container">
+<div class="dashboard-container">
 
-<!-- Profile Section -->
-<div class="profile">
-    <div class="profile-pic">
-        <img src="getProfilePic"
-             onerror="this.onerror=null; this.src='photos/defaultprofile.jpg';" />
+    <!-- Profile Section -->
+    <div class="profile-section">
+
+        <!-- Profile Picture -->
+        <div class="profile-pic">
+            <% if(base64Image != null) { %>
+            <img src="data:image/jpeg;base64,<%= base64Image %>" alt="Profile">
+            <% } else { %>
+            <div class="avatar-placeholder">
+                <%= user.getName().substring(0, 1).toUpperCase() %>
+            </div>
+            <% } %>
+        </div>
+
+        <!-- User Info -->
+        <div class="user-info">
+            <h2 class="user-name">Welcome, <%= user.getName() %> 💜</h2>
+
+            <!-- Bio Section - FIXED -->
+            <div class="bio-section">
+                <span class="bio-label">Bio:</span>
+                <p class="bio-text">
+                    <%= user.getBio() != null && !user.getBio().trim().isEmpty()
+                            ? user.getBio()
+                            : "Hey there! I'm using InnerCircle 👋" %>
+                </p>
+            </div>
+        </div>
     </div>
 
-    <h2>Welcome, <%= user.getName() %> 💖</h2>
-
-    <p><b>Bio:</b> <%= user.getBio() %></p>
-</div>
-
-<!-- Actions -->
-    <div class="actions">
-
-        <a href="createpost.jsp">
-            <button>Create Post ➕</button>
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <a href="createpost.jsp" class="btn btn-primary">
+            Create Post ✨
         </a>
-
-        <!-- go to the servlet first then forwaded to the jsp -->
-        <a href="getPost">
-            <button>View Feed 👀</button>
+        <a href="viewfeed" class="btn btn-secondary">
+            View Feed 📰
         </a>
-
-        <!-- it goes to Servlet (Servlet runs then fetch the data and then to jsp)-->
-        <a href="chatusers">
-            <button>Chat 💬</button>
+        <a href="chatusers" class="btn btn-chat">
+            Chat 💬
         </a>
-
     </div>
-</div>
 
 </div>
 
