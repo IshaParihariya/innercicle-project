@@ -1,26 +1,22 @@
 <hibernate-configuration>
-
     <session-factory>
 
-        <!-- Database connection settings -->
         <property name="hibernate.connection.driver_class">
             org.postgresql.Driver
         </property>
 
         <property name="hibernate.connection.url">
-            jdbc:postgresql://dpg-d72lltv5r7bs7388mghg-a.virginia-postgres.render.com:5432/innercircle_jux1?sslmode=require
+            jdbc:postgresql://db.jxsgawnyndcgfombjltg.supabase.co:5432/postgres?sslmode=require
         </property>
 
-
         <property name="hibernate.connection.username">
-            innercircle_jux1_user
+            postgres
         </property>
 
         <property name="hibernate.connection.password">
-            gGD2OHPll0ooL0Fgr4WdSEBiAMaUv2nf
+            YOUR_PASSWORD
         </property>
 
-        <!-- Hibernate settings -->
         <property name="hibernate.dialect">
             org.hibernate.dialect.PostgreSQLDialect
         </property>
@@ -29,9 +25,7 @@
         <property name="hibernate.format_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <!-- Entity mapping -->
         <mapping class="com.isha.model.Post"/>
 
     </session-factory>
-
 </hibernate-configuration>
