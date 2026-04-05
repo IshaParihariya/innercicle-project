@@ -61,7 +61,7 @@
         <a href="createpost.jsp" class="btn btn-primary">
             Create Post ✨
         </a>
-        <a href="viewfeed" class="btn btn-secondary">
+        <a href="getPost" class="btn btn-secondary">
             View Feed 📰
         </a>
         <a href="chatusers" class="btn btn-chat">
