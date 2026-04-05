@@ -15,7 +15,7 @@ body {
     justify-content: center;
     font-family: 'DM Sans', sans-serif;
 
-    background: url("../photos/register1.jpg") center/cover no-repeat fixed;
+    background: url("../photos/login.png") center/cover no-repeat fixed;
     position: relative;
     overflow: hidden;
 }

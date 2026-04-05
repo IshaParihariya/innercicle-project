@@ -34,7 +34,8 @@ getAttribute → RECEIVE
 <!-- Profile Section -->
 <div class="profile">
     <div class="profile-pic">
-        <img src="getProfilePic"/>
+        <img src="getProfilePic"
+             onerror="this.onerror=null; this.src='photos/defaultprofile.jpg';" />
     </div>
 
     <h2>Welcome, <%= user.getName() %> 💖</h2>

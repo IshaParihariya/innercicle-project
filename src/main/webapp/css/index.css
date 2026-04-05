@@ -1,90 +1,152 @@
-/* ===== RESET ===== */
-body {
+/* RESET */
+* {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* ===== FULL SCREEN BACKGROUND ===== */
-.landing-page {
-    height: 100vh;
+/* BODY BACKGROUND */
+body.landing-page {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+
+    background: url("../photos/index.jpg") no-repeat center center/cover;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background: linear-gradient(135deg, #ffc1cc, #ffe4e1);
+    position: relative;
+    overflow: hidden;
 }
 
-/* ===== CONTAINER ===== */
+/* DARK + GLOW OVERLAY (for readability) */
+body.landing-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.4),
+            rgba(60, 0, 80, 0.5)
+    );
+
+    backdrop-filter: blur(2px);
+}
+
+/* MAIN CARD */
 .landing-container {
+    position: relative;
+    z-index: 2;
+
     text-align: center;
-    width: 100%;
-    max-width: 700px;
-    padding: 20px;
+    padding: 40px;
+    width: 90%;
+    max-width: 500px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
 }
 
-/* ===== TITLE ===== */
+/* TITLE */
 .landing-container h1 {
-    font-size: 48px;
-    color: #ff4d6d;
-    margin-bottom: 10px;
-    text-shadow: 0 5px 15px rgba(255, 105, 135, 0.3);
+    font-size: 40px;
+    color: #fff;
+
+    margin-bottom: 20px;
+
+    text-shadow: 0 0 20px rgba(255, 180, 255, 0.8);
 }
 
-/* ===== TAGLINE ===== */
+/* TAGLINE */
 .tagline {
-    font-size: 18px;
-    color: #555;
-    line-height: 1.7;
-    margin-bottom: 40px;
+    font-size: 16px;
+    color: #f5e6ff;
+
+    line-height: 1.6;
+    margin-bottom: 30px;
+
+    opacity: 0.9;
 }
 
-/* ===== BUTTON WRAPPER ===== */
+/* BUTTONS CONTAINER */
 .buttons {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    flex-direction: column;
+    gap: 15px;
 }
 
-/* ===== REMOVE DEFAULT LINK STYLE ===== */
-.landing-page a {
+/* BUTTON BASE */
+.buttons a {
     text-decoration: none;
-}
+    padding: 12px;
 
-/* ===== BUTTON BASE ===== */
-.primary-btn,
-.secondary-btn {
-    padding: 14px 30px;
-    border-radius: 30px;
-    font-weight: bold;
+    border-radius: 15px;
+
     font-size: 15px;
-    transition: 0.3s;
-    display: inline-block;
+    transition: all 0.3s ease;
+
+    backdrop-filter: blur(5px);
 }
 
-/* ===== PRIMARY BUTTON ===== */
+/* PRIMARY BUTTON */
 .primary-btn {
-    border: 2px solid #ff4d6d;
-    color: #ff4d6d;
-    background: white;
+    background: linear-gradient(135deg, #ff9cf3, #c77dff);
+    color: white;
+
+    box-shadow: 0 0 15px rgba(255, 150, 255, 0.7);
 }
 
-/* ===== SECONDARY BUTTON ===== */
+/* SECONDARY BUTTON */
 .secondary-btn {
-    border: 2px solid #ff4d6d;
-    color: #ff4d6d;
-    background: white;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+
+    border: 1px solid rgba(255,255,255,0.3);
 }
 
-/* ===== HOVER EFFECTS ===== */
-.primary-btn:hover {
-    background: #ff4d6d;
-    color: white;
-    transform: scale(1.08);
+/* HOVER EFFECT */
+.buttons a:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0 25px rgba(255, 200, 255, 0.9);
 }
 
-.secondary-btn:hover {
-    background: #ff4d6d;
-    color: white;
-    transform: scale(1.08);
+/* FLOATING SPARKLES EFFECT ✨ */
+body.landing-page::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: url("https://www.transparenttextures.com/patterns/stardust.png");
+
+    opacity: 0.3;
+    animation: sparkleMove 20s linear infinite;
+}
+
+/* ANIMATION */
+@keyframes sparkleMove {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 1000px 1000px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .landing-container h1 {
+        font-size: 30px;
+    }
+
+    .tagline {
+        font-size: 14px;
+    }
 }

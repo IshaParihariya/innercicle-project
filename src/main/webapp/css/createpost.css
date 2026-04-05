@@ -1,63 +1,116 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY BACKGROUND */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #ffc1cc, #ffe4e1);
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+
+  background: url("../photos/createpost.jpg") no-repeat center center/cover;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+
+  position: relative;
 }
 
-/* Card container */
-.container {
-  background: white;
+/* SOFT OVERLAY (keeps bg visible but readable) */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(20, 0, 40, 0.35);
+  backdrop-filter: blur(2px);
+}
+
+/* FORM CONTAINER */
+form {
+  position: relative;
+  z-index: 2;
+
+  width: 90%;
+  max-width: 500px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
   padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(255, 105, 135, 0.3);
-  width: 380px;
-  text-align: center;
+
+  border-radius: 25px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255,255,255,0.25);
+
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
 }
 
-/* Heading */
-h2 {
-  color: #ff4d6d;
-  margin-bottom: 20px;
-}
-
-/* Textarea */
+/* TEXTAREA */
 textarea {
   width: 100%;
-  height: 120px;
-  padding: 12px;
-  border: 1px solid #ffc2d1;
-  border-radius: 12px;
-  resize: none;
-  font-size: 14px;
-  margin-bottom: 15px;
-  transition: 0.3s;
-}
+  height: 150px;
 
-/* Focus effect */
-textarea:focus {
-  border-color: #ff4d6d;
-  box-shadow: 0 0 6px rgba(255, 77, 109, 0.3);
-  outline: none;
-}
+  padding: 15px;
 
-/* Button */
-button {
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(to right, #ff4d6d, #ff758f);
+  border-radius: 15px;
   border: none;
-  color: white;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
+
+  outline: none;
+
+  resize: none;
+
+  font-size: 15px;
+  font-family: inherit;
+
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+
+  backdrop-filter: blur(5px);
+
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
 }
 
-/* Hover */
+/* PLACEHOLDER */
+textarea::placeholder {
+  color: #eee;
+  opacity: 0.8;
+}
+
+/* BUTTON */
+button {
+  padding: 12px;
+
+  border: none;
+  border-radius: 15px;
+
+  font-size: 15px;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #ff9cf3, #c77dff);
+  color: white;
+
+  box-shadow: 0 0 15px rgba(255, 150, 255, 0.7);
+
+  transition: all 0.3s ease;
+}
+
+/* BUTTON HOVER */
 button:hover {
-  transform: scale(1.05);
-  background: linear-gradient(to right, #e63956, #ff4d6d);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 200, 255, 0.9);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  textarea {
+    height: 120px;
+  }
 }
