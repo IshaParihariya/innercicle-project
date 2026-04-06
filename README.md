@@ -9,7 +9,7 @@ A safe space just for girls 💕 Share your thoughts, express freely, and connec
 
 **InnerCircle** is a social networking platform designed specifically as a safe, supportive community where girls can share posts, chat in real-time, and build meaningful connections in a judgment-free environment.
 
-🔗 **[Live Demo]([your-render-url-here.onrender.com](https://innercircle-isha.onrender.com))** 
+🔗 **[Live Demo]((https://innercircle-isha.onrender.com))** 
 
 ---
 
@@ -28,12 +28,12 @@ A safe space just for girls 💕 Share your thoughts, express freely, and connec
 
 | Technology | Purpose |
 |------------|---------|
-| **Java (Servlets & JSP)** | Backend logic & view templates |
+| **Java (Servlets & JSP)** | Backend logic & server-side rendering |
 | **Hibernate ORM** | Database management & entity mapping |
-| **PostgreSQL** | Cloud database (Render) |
-| **HTML, CSS** | Frontend styling |
+| **PostgreSQL** | Cloud database (Superbase) |
+| **HTML, CSS** | Frontend structure & styling |
 | **Apache Tomcat** | Application server |
-| **Render** | Cloud deployment platform |
+| **Supabase** | Cloud deployment platform |
 
 
 ---
@@ -108,7 +108,7 @@ Before running this project locally, ensure you have:
 
 - ☕ **Java JDK 11** or higher
 - 🐱 **Apache Tomcat 10.x**
-- 🐘 **PostgreSQL** (or use Render's cloud database)
+- 🐘 **PostgreSQL** (or use Supabase's cloud database)
 - 💻 **IntelliJ IDEA** / Eclipse IDE
 - 📦 **Maven** (for dependency management)
 
@@ -137,8 +137,8 @@ cd innercircle-project
 <property name="hibernate.connection.password">your_password</property>
 ```
 
-**Option B: Render Cloud Database**
-- Use the connection string from your Render PostgreSQL instance
+**Option B: Superbase Cloud Database**
+- Use the connection string from your Supabase PostgreSQL instance
 - Update the same properties in `hibernate.cfg.xml`
 
 ### 4. Configure Tomcat Server
@@ -163,11 +163,11 @@ Hibernate will **auto-create** the necessary tables on first run thanks to:
 ## 🌐 Deployment
 
 This application is deployed on **Render** with:
-- ✅ PostgreSQL cloud database
+- ✅ PostgreSQL Supabase cloud database
 - ✅ Automatic deployments from GitHub
 - ✅ HTTPS enabled by default
 
-**Live URL:** [Add your Render URL here]
+**Live URL:** [(https://innercircle-isha.onrender.com)]
 
 ---
 
@@ -180,7 +180,7 @@ This project demonstrates:
 ✨ **MVC Architecture** - Clean separation of concerns  
 ✨ **Full CRUD Operations** - Create, Read, Update, Delete functionality  
 ✨ **Session Management** - Secure user authentication  
-✨ **Cloud Deployment** - Production-ready on Render  
+✨ **Cloud Deployment** - Production-ready on Render
 
 ---
 
