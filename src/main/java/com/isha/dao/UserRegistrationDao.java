@@ -1,5 +1,5 @@
 package com.isha.dao;
-
+//update : Yes, my data is fully secure because RLS is enabled and no public policies are defined.
 import com.isha.model.UserRegistration;
 import com.isha.service.UserRegistrationService;
 import com.isha.util.HibernateUtil;
